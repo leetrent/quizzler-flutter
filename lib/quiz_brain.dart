@@ -39,18 +39,24 @@ class QuizBrain {
   }
 
   String getQuestionText() {
-    print('[QuizBrain][getQuestionText] => _questionBank.length: ' +
-        _questionBank.length.toString());
-    print('[QuizBrain][getQuestionText] => _questionNumber: ' +
-        _questionNumber.toString());
     return _questionBank[_questionNumber].questionText;
   }
 
   bool getQuestionAnswer() {
-    print('[QuizBrain][getQuestionAnswer] => _questionBank.length: ' +
-        _questionBank.length.toString());
-    print('[QuizBrain][getQuestionAnswer] => _questionNumber: ' +
-        _questionNumber.toString());
     return _questionBank[_questionNumber].questionAnswer;
+  }
+
+  bool isFinished() {
+    print('[QuizBrain][isFinished] => _questionBank.length: ' +
+        _questionBank.length.toString());
+    print('[QuizBrain][isFinished] => _questionNumber: ' +
+        _questionNumber.toString());
+    print('[QuizBrain][isFinished] => returning: ' +
+        (_questionNumber == _questionBank.length - 1).toString());
+    return (_questionNumber == _questionBank.length - 1);
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() => runApp(Quizzler());
 
@@ -31,6 +32,15 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool userPickedAnswer) {
     setState(() {
+      if (quizBrain.isFinished()) {
+        Alert(
+                context: context,
+                title: "Finished",
+                desc: "You have completed this quiz.")
+            .show();
+        quizBrain.reset();
+        scoreKeeper.clear();
+      }
       if (userPickedAnswer == quizBrain.getQuestionAnswer()) {
         scoreKeeper.add(Icon(Icons.check, color: Colors.green));
       } else {
