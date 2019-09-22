@@ -34,10 +34,22 @@ class _QuizPageState extends State<QuizPage> {
     setState(() {
       if (quizBrain.isFinished()) {
         Alert(
-                context: context,
-                title: "Finished",
-                desc: "You have completed this quiz.")
-            .show();
+          context: context,
+          type: AlertType.info,
+          title: "Quiz Completed",
+          desc: "You have completed this quiz.",
+          buttons: [
+            DialogButton(
+              child: Text(
+                "OK",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () => Navigator.pop(context),
+              color: Color.fromRGBO(0, 179, 134, 1.0),
+              radius: BorderRadius.circular(0.0),
+            ),
+          ],
+        ).show();
         quizBrain.reset();
         scoreKeeper.clear();
       }
