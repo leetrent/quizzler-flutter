@@ -52,6 +52,7 @@ class _QuizPageState extends State<QuizPage> {
         ).show();
         quizBrain.reset();
         scoreKeeper.clear();
+        return;
       }
       if (userPickedAnswer == quizBrain.getQuestionAnswer()) {
         scoreKeeper.add(Icon(Icons.check, color: Colors.green));
